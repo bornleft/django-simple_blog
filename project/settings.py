@@ -81,10 +81,9 @@ INSTALLED_APPS = (
     'django.contrib.sites',
 
     # Utility applications
-    'compress',
+
     'django_extensions',
-    'project.apps.thrdparty.analytics',
-    'project.apps.support.debug',
+
     'south',
 
     # 3d party applications

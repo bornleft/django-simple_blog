@@ -4,14 +4,14 @@ import sys
 from project.settings import MIDDLEWARE_CLASSES, INSTALLED_APPS, PROJECT_ROOT, TEMPLATE_CONTEXT_PROCESSORS
 
 ADMINS = (
-    ('x', 'x@nullrom.net'),
+    ('x', 'x@x.x'),
 )
 
 MANAGERS = ADMINS
 
 # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3', 'oracle'
 DATABASE_ENGINE = 'sqlite3'
-DATABASE_NAME = os.path.join(PROJECT_ROOT,'project.db')
+DATABASE_NAME = os.path.join(PROJECT_ROOT,'blog_base.db')
 DATABASE_USER = ''
 DATABASE_PASSWORD = ''
 DATABASE_HOST = ''
@@ -20,15 +20,13 @@ DATABASE_PORT = ''
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = ''
 
-COMPRESS = False
-COMPRESS_AUTO = True
-COMPRESS_VERSION = True
+
 
 INTERNAL_IPS = ('127.0.0.1',)
 
 TEMPLATE_CONTEXT_PROCESSORS +=('django.core.context_processors.debug',)
 
-ENABLED_TOOLBAR = False
+ENABLED_TOOLBAR = True
 
 if ENABLED_TOOLBAR:
     MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)

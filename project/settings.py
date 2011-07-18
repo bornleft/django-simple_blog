@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import os.path
-import sys
 
 PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
 
@@ -93,5 +92,4 @@ INSTALLED_APPS = (
     # 'project.apps',
 )
 
-from project.static import *
 from run.settings import *

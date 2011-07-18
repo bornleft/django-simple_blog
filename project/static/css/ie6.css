@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+/* {{{ Hacks
+------------------------------------------*/
+body { behavior: url("/static/css/csshover3.htc"); }
+img, div, input { behavior: url("/static/css/iepngfix.htc"): }
+/* }}} */
+
+/* {{{ Overrides
+------------------------------------------*/
+
+/* }}} */

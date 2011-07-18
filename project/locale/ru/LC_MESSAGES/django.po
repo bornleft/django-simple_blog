@@ -1,0 +1,3 @@
+#: templates/admin/base_site.html:4 templates/admin/base_site.html.py:15
+msgid "Control panel"
+msgstr "Панель управления"

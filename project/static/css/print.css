@@ -1,0 +1,121 @@
+@charset "utf-8";
+
+/* Table of contents:
+----------------------------------------*//*
+ 1. Layout
+ 2. Typography
+ 3. Tables
+ 4. Images
+ 5. Forms
+ 6. Misc
+------------------------------------------*/
+
+/* {{{ 1. Layout
+------------------------------------------*/
+#header     { }
+#navigation { display:none; }
+
+#body       { }
+#content    { }
+#sidebar    { display:none; }
+#left-sidebar  { display:none; }
+#right-sidebar  { display:none; }
+
+#infopanel  { display:none; }
+
+#footer     { }
+/* }}} */
+
+/* {{{ 2. Typography
+------------------------------------------*/
+body { 
+  line-height: 1.5;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  color:#000;
+  background: none;
+  font-size: 10pt;
+}
+
+a:link, a:visited {
+  background: transparent;
+  font-weight:700;
+  text-decoration: underline;
+}
+
+a:link:after, a:visited:after {
+  content: " (" attr(href) ")";
+  font-size: 90%;
+}
+
+/* If you're having trouble printing relative links, uncomment and customize this:
+   (note: This is valid CSS3, but it still won't go through the W3C CSS Validator) */
+
+/* a[href^="/"]:after {
+  content: " (http://www.yourdomain.com" attr(href) ") ";
+} */
+
+h1, h2, h3, h4 { }
+h2             { }
+h3             { }
+h4             { }
+
+blockquote     { }
+code, pre      { }
+pre            { }
+strong         { }
+em             { }
+sup, sub       { }
+sup            { }
+sub            { }
+
+hr             { }
+
+ul, ol         { }
+ul li, ol li   { }
+
+dl             { }
+dl dt          { }
+dl dd          { }
+
+p, ul, ol, dl, table, blockquote, pre, img, hr { }
+/* }}} */
+
+/* {{{ 3. Tables
+------------------------------------------*/
+table         { }
+th            { }
+thead th      { }
+th,td,caption { }
+tr.even td    { }
+tr.odd td     { }
+tfoot         { }
+caption       { }
+/* }}} */
+
+/* {{{ 4. Images
+------------------------------------------*/
+img { }
+/* }}} */
+
+/* {{{ 5. Forms
+------------------------------------------*/
+form       { display:none; }
+/* }}} */
+
+/* {{{ 6. Misc
+------------------------------------------*/
+.small         { }
+.large         { }
+.hide          { }
+
+.quiet         { }
+.loud          { }
+.highlight     { }
+.added         { }
+.removed       { }
+
+.first         { }
+.last          { }
+.top           { }
+.bottom        { }
+/* }}} */

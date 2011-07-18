@@ -1,0 +1,32 @@
+<VirtualHost *:80>
+    ServerAdmin webmaster@project
+    ServerName project
+    ServerAlias *.project
+
+    DocumentRoot /path/to/project/
+    ErrorLog /path/to/project/logs/error.log
+    LogLevel warn
+    CustomLog  /path/to/project/logs/access.log combined
+
+    Alias /static/ /path/to/project/static/
+    <Directory /path/to/project/static/>
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+    Alias /media/ /usr/lib/python2.5/site-packages/django/contrib/admin/media/
+    <Directory /usr/lib/python2.5/site-packages/django/contrib/admin/media/>
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+    WSGIScriptAlias / /path/to/project/django.wsgi
+    <Directory /path/to/project/>
+        Order allow,deny
+        Allow from all
+    </Directory>
+
+    #Alias /robots.txt /usr/local/wsgi/static/robots.txt
+    #Alias /favicon.ico /path/to/project/static/img/favicon.ico
+    #AliasMatch /([^/]*\.css) /path/to/project/static/styles/$1
+</VirtualHost>

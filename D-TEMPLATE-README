@@ -1,0 +1,95 @@
+Описание проекта:
+    DTemplate - проект с открытым исходным кодом, который дает возможность пользователям
+django иметь многочисленные инструменты упрощающие работу при создании нового django
+проекта без необходимости настраивать их каждый раз.
+    DTemplate создавался для собственных целей из уже существующих приложений с открытым кодом.
+Публикуя данный проект я хотел бы выразить огромную благодарность людям, которые предоставили
+возможность доступа к своим интеллектуальным трудам.
+
+    Возможности DTemplate:
+
+    - Поддержка проекта
+        - Расширенные команды для manage.py (django-extensions)
+        - Шаблон файла для создания виртуального хоста Apache (extra/vhost)
+
+    - Работа с БД
+        - Скрипты для создания начальной БД (extra/init_db)
+        - Миграции БД (South)
+
+    - Development режим
+        - Сессии Vim для часто используемых файлов (sessions/*)
+        - Отладочная панель (django-debug-toolbar)
+
+    - Production режим
+        - Использование сжатия статики (django-compress)
+        - Шаблонный тег spaceless_if_not_debug (project.apps.support.debug)
+        - Интеграция с Google Analytics (django-google-analytics)
+
+    - Организация работы с Django проектом
+        - Разделение приложений django на основные, приложения поддержки и сторонние приложения 
+          (project/apps, project/apps/support, project/apps/thrdparty)
+        - Использование декораторов от piranha.org.ua (project/lib/decorators.py)
+        - Использование JsonResponse от piranha.org.ua (project/lib/http.py)
+
+    - Организация работы со статикой
+        - Интеграция с известными сторонними бибиотеками css и js
+          (blueprint-css, oocss, yui, jquery, extjs)
+        - Базовые стили для экрана (project/static/css/screen.css)
+        - Базовые стили для печати (project/static/css/print.css)
+        - Базовые стили для IE (project/static/css/ie*.css)
+        - Поддержка whatever:hover (project/static/css/csshover3.htc)
+        - Поддержка прозрачных PNG в IE (project/static/css/iepngfix.htc)
+        - Плагин blueprint-css с частоиспользуемыми классами
+          (project/static/css/blueprint/misc.css)
+        - Плагин blueprint-css для поддержки резиновой верстки
+          (project/static/css/blueprint/liquid.css)
+        - Базовый файл перегрузки ExtJS стилей (project/static/css/extjs/overrides.css)
+        - Базовые файлы для JS
+
+    - Организация работы с файлами шаблонов
+        - Базовый XHTML 1.0 Strict шаблон
+        - Базовый шаблон для создания ExtJS приложений
+        - Шаблоны страниц ошибок 404 и 500
+
+Миссия проекта:
+    1. Побудить разработчиков к росту числа новых проектов с открытым исходным кодом и 
+       упростить работу над ними.
+    2. Поддержать и укрепить позиции существующих проектов на базе которых создан DTemplate.
+
+Статус проекта:
+    Проект DTemplate находится в стадии активной разработки и не имеет фиксированных версий
+    на текущий момент. 
+
+    Адрес проекта http://bitbucket.org/yureg/dtemplate
+
+    Скачать DTemplate можно выполнив следующую комманду:
+    hg clone https://yureg@bitbucket.org/yureg/dtemplate/
+
+План развития:
+    * Создание руководства по использованию DTemplate
+    * Создать базовый скрипт fabric для развертывания проекта на production сервер
+    * Создать скрипт сборки проекта, который преобразует символьные ссылки реальные файлы
+    * Создать базовый шаблон sphinx для создания документации по проекту
+    * Создать простой issue tracker в админке независимый от основной БД с возможностью
+      синхронизации с репозиторием
+    * Создать автоматические тесты для проверки DTemplate
+    * Определиться с лицензированием проекта
+
+Зависимости:
+    Python:
+        django v1.1.1 - http://www.djangoproject.com
+        south - http://south.aeracode.org/
+        django-extensions - http://code.google.com/p/django-command-extensions/
+        django-debug-toolbar - http://github.com/robhudson/django-debug-toolbar
+        csstidy - http://csstidy.sourceforge.net (sudo apt-get install csstidy)
+        django-compress - http://github.com/pelme/django-compress
+        google-analytics - http://code.google.com/p/django-google-analytics/
+
+    JavaScript:
+        extjs - http://www.extjs.com/
+        jquery - http://www.jquery.com/
+        yui - http://developer.yahoo.com/yui/3/
+
+    CSS:
+        oocss - http://wiki.github.com/stubbornella/oocss/
+        blueprint - http://www.blueprintcss.org/

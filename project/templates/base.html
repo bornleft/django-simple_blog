@@ -1,4 +1,4 @@
-{% load template_debug %}{% load compressed %}{% load analytics %}{% spaceless_if_not_debug %}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB">
 <head>
     <title>{% block title %}{% endblock %}</title>
@@ -8,25 +8,10 @@
     {% block meta %}{% endblock %}
 
     {% block styles %}
-        {% compressed_css 'screen' %}
-        <!--[if lte IE 6]>
-            {% compressed_css 'ie6hacks' %}
-        <![endif]-->
-        <!--[if IE 7]>
-            {% compressed_css 'ie7hacks' %}
-        <![endif]-->
-        <!--[if IE 8]>
-            {% compressed_css 'ie8hacks' %}
-        <![endif]-->
         {% block extra_styles %}{% endblock %}
     {% endblock %}
 
     {% block lib_scripts %}
-        {% if debug %}
-            {% compressed_js 'libs_debug' %}
-        {% else %}
-            {% compressed_js 'libs' %}
-        {% endif %}
         {% block extra_lib_scripts %}{% endblock %}
     {% endblock %}
 
@@ -36,9 +21,6 @@
 {% block body %}{% endblock %}
 
 {% block project_scripts %}
-    {% compressed_js 'project' %}
-    {% if not debug %}{% analytics %}{% endif %}
-    {% block extra_project_scripts %}{% endblock %}
 {% endblock %}
 </body>
-</html>{% endspaceless_if_not_debug %}
+</html>

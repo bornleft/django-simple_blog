@@ -26,8 +26,3 @@ class Entry(models.Model):
     author = models.ForeignKey(User, verbose_name=_(u"Автор"), null=False, blank=False)
     date_pub = models.DateTimeField(_(u"Дата опубликования"), auto_now_add=True)
     date_change = models.DateTimeField(_(u"Дата изменения"), auto_now=True)
-
-
-class Test():
-		print 'first str'
-		print 'last str'

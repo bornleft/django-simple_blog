@@ -84,7 +84,7 @@ INSTALLED_APPS = (
     'django_extensions',
 
     'south',
-
+		'project.apps.blog',
     # 3d party applications
     # 'project.apps.3dparty.name',
 

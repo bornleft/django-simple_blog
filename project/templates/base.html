@@ -8,6 +8,11 @@
     {% block meta %}{% endblock %}
 
     {% block styles %}
+        <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/css/blueprint/reset.css" />
+        <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/css/blueprint/liquid.css" />
+        <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/css/main.css" />
+
+
         {% block extra_styles %}{% endblock %}
     {% endblock %}
 
@@ -15,12 +20,42 @@
         {% block extra_lib_scripts %}{% endblock %}
     {% endblock %}
 
-    <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ MEDIA_URL }}/img/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-{% block body %}{% endblock %}
 
-{% block project_scripts %}
-{% endblock %}
+<div id="headerContainer" class="span-24">
+    <h1>Blog</h1>
+</div>
+
+<div id="menuContainer" class="span-24">
+    {% block menu %}
+
+    {% endblock %}
+</div>
+
+<div id="mainContainer" class="span-18">
+    {% block main %}
+
+    {% endblock %}
+
+</div>
+
+<div id="additionalContentContainer" class="span-6 last">
+    {% block addCont %}
+
+    {% endblock %}
+</div>
+
+<div id="footerContainer" class="span-24 last">
+
+    <h4>
+    {{ PROJECT_NAME }} - 2011
+    </h4>
+</div>
+
+
+
+
 </body>
 </html>

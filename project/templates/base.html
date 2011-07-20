@@ -10,6 +10,8 @@
     {% block styles %}
         <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/css/blueprint/reset.css" />
         <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/css/blueprint/liquid.css" />
+        <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/css/blueprint/misc.css" />
+        <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/css/blueprint/typography.css" />
         <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/css/main.css" />
 
 
@@ -23,38 +25,39 @@
     <link rel="shortcut icon" href="{{ MEDIA_URL }}/img/favicon.ico" type="image/x-icon" />
 </head>
 <body>
+<div class="container">
+    <div id="headerContainer" class="span-24 last">
+        <h1>Blog</h1>
+    </div>
 
-<div id="headerContainer" class="span-24">
-    <h1>Blog</h1>
+    <div id="menuContainer" class="span-24 lsat">
+        {% block menu %}
+        Menu HERE
+        {% endblock %}
+    </div>
+
+    <div id="mainContainer" class="span-15 colborder">
+        {% block main %}
+        Content here
+        {% endblock %}
+
+    </div>
+
+    <div id="rightContainer" class="span-7 last box">
+        {% block addCont %}
+            Something here
+
+        {% endblock %}
+    </div>
+
+    <div id="footerContainer" class="span-24 last">
+
+        <h4>
+        {{ PROJECT_NAME }} - 2011
+        </h4>
+    </div>
+
 </div>
-
-<div id="menuContainer" class="span-24">
-    {% block menu %}
-
-    {% endblock %}
-</div>
-
-<div id="mainContainer" class="span-18">
-    {% block main %}
-
-    {% endblock %}
-
-</div>
-
-<div id="additionalContentContainer" class="span-6 last">
-    {% block addCont %}
-
-    {% endblock %}
-</div>
-
-<div id="footerContainer" class="span-24 last">
-
-    <h4>
-    {{ PROJECT_NAME }} - 2011
-    </h4>
-</div>
-
-
 
 
 </body>

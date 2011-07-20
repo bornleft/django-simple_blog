@@ -6,7 +6,31 @@ main.css
  * Description: Main styles for base.html
 **/
 
-#headerContainer{
 
+#headerContainer{
+    min-height: 100px;
 
 }
+
+#menuContainer{
+    min-height: 50px;
+
+}
+
+#mainContainer{
+   min-height: 600px;
+
+}
+
+#rightContainer{
+    min-height: 400px;
+
+}
+
+#footerContainer{
+    min-height: 50px;
+
+}
+
+
+

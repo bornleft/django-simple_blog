@@ -6,4 +6,9 @@ from django.utils import simplejson as json
 from django.core.urlresolvers import reverse
 from django.utils.http import urlquote
 
+def first(request):
+
+
+	return render_to_response('blog/first.html', locals(), context_instance=RequestContext(request))
+
 

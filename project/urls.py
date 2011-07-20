@@ -12,6 +12,12 @@ urlpatterns = patterns('project.views',
 
 # Include applications URLConf
 urlpatterns += patterns('',
+
+    (r'blog/', include('project.apps.blog.urls')),
+                        
+    ######----------------------------------
+    ######     for admin
+    ######----------------------------------
     (r'^admin/', include(admin.site.urls)),
 )
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render_to_response
-from django.http import HttpResponseRedirect, Http404, HttpResponse
+from django.http import HttpResponseRedirect, Http404, HttpResponse, HttpResponseNotFound
 from django.template import RequestContext
 from django.utils import simplejson as json
 from django.core.urlresolvers import reverse
@@ -11,5 +11,16 @@ def first(request):
 	entrys = Entry.objects.all().order_by('-date_pub')
 	groups = Group.objects.all().order_by('name')
 	return render_to_response('blog/main.html', locals(), context_instance=RequestContext(request))
+
+
+def entry(request, pk):
+
+	try:
+		entry = Entry.objects.get(pk = pk)
+	except:
+		return HttpResponseNotFound
+
+
+	return render_to_response('blog/entry.html', locals(), context_instance=RequestContext(request))
 
 

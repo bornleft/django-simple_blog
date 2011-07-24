@@ -3,7 +3,7 @@
 	{% block main %}
 		{% for entry in entrys %}
             <div class="entry">
-			<h3><b>Название</b> {{ entry.name }}</h3>
+			<h3><b>Название</b> <a href="{% url view_entry entry.pk %}">{{ entry.name }}</a></h3>
 			<b>Запись:</b><br>{{ entry.entry }}<br>
 			<b>Автор</b> {{ entry.author }}<br>
 			<b>Дата публикации</b> {{ entry.date_pub }}

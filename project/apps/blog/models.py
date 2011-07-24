@@ -9,9 +9,13 @@ import os
 class Group(models.Model):
 		name = models.CharField(_(u"Название"), max_length=100, null=False, blank=False )
 
+		def __unicode__(self):
+			return u'%s' % (self.name)
+
 		class Meta:
-				verbose_name = _(u'группа')
+				verbose_name = _(u'группу')
 				verbose_name_plural = _(u'группы')
+
 
 class Tag(models.Model):
 		name = models.CharField(_(u"Название"), max_length = 100, null = False, blank = False)
@@ -31,7 +35,7 @@ class Comment(models.Model):
 				verbose_name_plural = _(u'комменты')
 
 class Entry(models.Model):
-		group = models.ForeignKey(Group, verbose_name=_(u""), null=False, blank=False)
+		group = models.ForeignKey(Group, verbose_name=_(u"группа"), null=False, blank=False)
 		name = models.CharField(_(u"Название"), max_length=100, null=False, blank=False )
 		entry = models.TextField(_(u"Текст"), null = False, blank = False)
 		author = models.ForeignKey(User, verbose_name=_(u"Автор"), null=False, blank=False)

@@ -21,6 +21,9 @@ class Tag(models.Model):
 		name = models.CharField(_(u"Название"), max_length = 100, null = False, blank = False)
 		entrys = models.ManyToManyField('Entry', verbose_name=_(u"Запись"), blank=True, null=True)
 
+		def __unicode__(self):
+			return u'%s' % (self.name)
+
 		class Meta:
 				verbose_name = _(u'тэг')
 				verbose_name_plural = _(u'тэги')
@@ -41,6 +44,9 @@ class Entry(models.Model):
 		author = models.ForeignKey(User, verbose_name=_(u"Автор"), null=False, blank=False)
 		date_pub = models.DateTimeField(_(u"Дата опубликования"), auto_now_add=True)
 		date_change = models.DateTimeField(_(u"Дата изменения"), auto_now=True)
+
+		def __unicode__(self):
+			return u'%s' % (self.name)
 
 		class Meta:
 				verbose_name = _(u'запись')

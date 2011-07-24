@@ -3,10 +3,11 @@
 	{% block main %}
 
             <div class="entry">
-			<h3><b>Название</b> {{ entry.name }}</h3>
-			<b>Запись:</b><br>{{ entry.entry }}<br>
+			<h3>{{ entry.name }}</h3>
+			{{ entry.entry }}<br>
 			<b>Автор</b> {{ entry.author }}<br>
-			<b>Дата публикации</b> {{ entry.date_pub }}
+			<b>Дата публикации</b> {{ entry.date_pub }}<br><br>
+			<a href = '/'>вернуться</a>
             </div>
 
 	{% endblock %}

@@ -10,16 +10,16 @@ class Group(models.Model):
 		name = models.CharField(_(u"Название"), max_length=100, null=False, blank=False )
 
 		class Meta:
-				verbose_name = 'группа'
-				verbose_name_plural = 'группы'
+				verbose_name = _(u'группа')
+				verbose_name_plural = _(u'группы')
 
 class Tag(models.Model):
 		name = models.CharField(_(u"Название"), max_length = 100, null = False, blank = False)
 		entrys = models.ManyToManyField('Entry', verbose_name=_(u"Запись"), blank=True, null=True)
 
 		class Meta:
-				verbose_name = 'тэг'
-				verbose_name_plural = 'тэги'
+				verbose_name = _(u'тэг')
+				verbose_name_plural = _(u'тэги')
 
 class Comment(models.Model):
 		entry = models.ForeignKey('Entry', verbose_name = u"", null = False, blank = False)
@@ -27,8 +27,8 @@ class Comment(models.Model):
 		date_pub = models.DateTimeField(u"Дата опубликования", default=datetime.now())
 
 		class Meta:
-				verbose_name = 'коммент'
-				verbose_name_plural = 'комменты'
+				verbose_name = _(u'коммент')
+				verbose_name_plural = _(u'комменты')
 
 class Entry(models.Model):
 		group = models.ForeignKey(Group, verbose_name=_(u""), null=False, blank=False)
@@ -39,5 +39,5 @@ class Entry(models.Model):
 		date_change = models.DateTimeField(_(u"Дата изменения"), auto_now=True)
 
 		class Meta:
-				verbose_name = 'запись'
-				verbose_name_plural = 'записи'
+				verbose_name = _(u'запись')
+				verbose_name_plural = _(u'записи')

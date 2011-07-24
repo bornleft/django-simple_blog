@@ -6,7 +6,8 @@ from django.conf.urls.defaults import *
 
 # Global URLConf
 urlpatterns = patterns('project.apps.blog.views',
-	url(r'^$', 'first', name="show"),
+	url(r'^entry/(\d+)$', 'entry', name="view_entry"),
+	url(r'^$', 'first', name=u"first"),
 )
 
 

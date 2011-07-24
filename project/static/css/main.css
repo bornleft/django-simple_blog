@@ -36,7 +36,10 @@ main.css
 
 /* Entry */
 .entry{
-    
+    border: 1px solid gray;
+    padding: 2px;
+    margin: 3px;
+
 
 }
 

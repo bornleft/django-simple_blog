@@ -3,7 +3,7 @@
 	{% block main %}
 		{% for entry in entrys %}
             <div class="entry">
-			<b>Название</b> {{ entry.name }}<br>
+			<h3><b>Название</b> <a href="{% url view_entry entry.pk %}">{{ entry.name }}</a></h3>
 			<b>Запись:</b><br>{{ entry.entry }}<br>
 			<b>Автор</b> {{ entry.author }}<br>
 			{% if entry.date_pub|date:"DATETIME_FORMAT" = entry.date_change|date:"DATETIME_FORMAT" %}

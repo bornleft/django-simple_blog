@@ -6,7 +6,11 @@
 			<b>Название</b> {{ entry.name }}<br>
 			<b>Запись:</b><br>{{ entry.entry }}<br>
 			<b>Автор</b> {{ entry.author }}<br>
-			<b>Дата публикации</b> {{ entry.date_pub }}
+			{% if entry.date_pub|date:"DATETIME_FORMAT" = entry.date_change|date:"DATETIME_FORMAT" %}
+				<b>Дата публикации</b> {{ entry.date_pub }}<br><br>
+			{% else %}
+				<b>Дата изменения</b> {{ entry.date_change|date:"DATETIME_FORMAT" }}<br><br>
+			{% endif %}
             </div>
 		{% endfor %}
 	{% endblock %}

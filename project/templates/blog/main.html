@@ -1,10 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+	{% block main %}
+		{% for entry in entrys %}
+			<b>Название</b> {{ entry.name }}<br>
+			<b>Запись:</b><br>{{ entry.entry }}<br>
+			<b>Автор</b> {{ entry.author }}<br>
+			<b>Дата публикации</b> {{ entry.date_pub }}
+		{% endfor %}
+	{% endblock %}

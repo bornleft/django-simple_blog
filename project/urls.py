@@ -7,13 +7,12 @@ admin.autodiscover()
 
 # Global URLConf
 urlpatterns = patterns('project.views',
-    (r'^$', 'index'),
 )
 
 # Include applications URLConf
 urlpatterns += patterns('',
 
-    (r'blog/', include('project.apps.blog.urls')),
+    (r'^$', include('project.apps.blog.urls')),
                         
     ######----------------------------------
     ######     for admin

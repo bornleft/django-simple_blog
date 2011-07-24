@@ -2,9 +2,11 @@
 
 	{% block main %}
 		{% for entry in entrys %}
+            <div class="entry">
 			<b>Название</b> {{ entry.name }}<br>
 			<b>Запись:</b><br>{{ entry.entry }}<br>
 			<b>Автор</b> {{ entry.author }}<br>
 			<b>Дата публикации</b> {{ entry.date_pub }}
+            </div>
 		{% endfor %}
 	{% endblock %}

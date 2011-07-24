@@ -55,6 +55,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.auth',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
+    'project.context_processors.vars.setting_vars',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,8 +83,12 @@ INSTALLED_APPS = (
     # Utility applications
 
     'django_extensions',
-
 	'south',
+
+
+###-------------------------------------
+###     PROJECT APPS
+###-------------------------------------
 	'project.apps.blog',
     # 3d party applications
     # 'project.apps.3dparty.name',
@@ -93,3 +98,7 @@ INSTALLED_APPS = (
 )
 
 from run.settings import *
+
+
+
+PROJECT_NAME = "django-simple_blog"

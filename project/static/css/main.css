@@ -28,6 +28,7 @@ main.css
 }
 
 #footerContainer{
+    text-align: center;
     min-height: 50px;
 
 }

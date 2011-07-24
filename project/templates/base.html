@@ -26,31 +26,31 @@
 </head>
 <body>
 <div class="container">
-    <div id="headerContainer" class="span-24 last">
+    <div id="headerContainer" class="span-24 last border">
         <h1>Blog</h1>
     </div>
 
-    <div id="menuContainer" class="span-24 lsat">
+    <div id="menuContainer" class="span-24 last border">
         {% block menu %}
         Menu HERE
         {% endblock %}
     </div>
 
-    <div id="mainContainer" class="span-15 colborder">
+    <div id="mainContainer" class="span-15 border">
         {% block main %}
         Content here
         {% endblock %}
 
     </div>
 
-    <div id="rightContainer" class="span-7 last box">
+    <div id="rightContainer" class="span-8 last box">
         {% block addCont %}
             Something here
 
         {% endblock %}
     </div>
 
-    <div id="footerContainer" class="span-24 last">
+    <div id="footerContainer" class="span-24 last border">
 
         <h4>
         {{ PROJECT_NAME }} - 2011

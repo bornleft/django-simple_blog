@@ -146,7 +146,7 @@
 
 /* Border on right hand side of a column. */
 .border {
-	border-right: 1px solid #eee;
+	border: 1px solid black;
 }
 
 /* Border with more whitespace, spans one column. */

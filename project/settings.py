@@ -86,11 +86,13 @@ INSTALLED_APPS = (
     'django_extensions',
 	'south',
 
-
 ###-------------------------------------
 ###     PROJECT APPS
 ###-------------------------------------
+
 	'project.apps.blog',
+	'project.lib.disqus',
+
     # 3d party applications
     # 'project.apps.3dparty.name',
 
@@ -100,6 +102,7 @@ INSTALLED_APPS = (
 
 from run.settings import *
 
-
+DISQUS_API_KEY = '16lBm0AFi5aKtZvW6DKtJmzODpk7Xa2wI75oaAXdGzZhjVKZtd1qUliI1k0kDjko'
+DISQUS_WEBSITE_SHORTNAME = 'simpledjnagoblog'
 
 PROJECT_NAME = "django-simple_blog"

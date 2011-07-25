@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
+	{% block extra_lib_scripts %}
+		{% load disqus_tags %}
+		{% disqus_dev %}
+	{% endblock %}
 
 	{% block main %}
 
@@ -6,8 +10,10 @@
 			<h3>{{ entry.name }}</h3>
 			{{ entry.entry }}<br>
 			<b>Автор</b> {{ entry.author }}<br>
-			<b>Дата публикации</b> {{ entry.date_pub }}<br><br>
-			<a href = '/'>вернуться</a>
+			<b>Дата публикации</b> {{ entry.date_pub }}<br>
+			{% disqus_show_comments %}<br>
+			<a href = '/'>вернуться</a><br>
+			
             </div>
 
 	{% endblock %}

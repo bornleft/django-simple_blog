@@ -29,15 +29,6 @@ class Tag(models.Model):
 				verbose_name = _(u'тэг')
 				verbose_name_plural = _(u'тэги')
 
-class Comment(models.Model):
-		entry = models.ForeignKey('Entry', verbose_name = u"", null = False, blank = False)
-		comment = models.TextField(_(u"Название"), max_length = 100, null = False, blank = False)
-		date_pub = models.DateTimeField(u"Дата опубликования", default=datetime.now())
-
-		class Meta:
-				verbose_name = _(u'коммент')
-				verbose_name_plural = _(u'комменты')
-
 class Entry(models.Model):
 		group = models.ForeignKey(Group, verbose_name=_(u"группа"), null=False, blank=False)
 		name = models.CharField(_(u"Название"), max_length=100, null=False, blank=False )

@@ -12,11 +12,6 @@ class BlogEntry(ModelAdmin):
 class BlogTag(ModelAdmin):
 		list_display = ('name', )
 
-class BlogComment(ModelAdmin):
-		list_display = ('comment', 'date_pub', )
-
-
 site.register(models.Group, BlogGroup)
 site.register(models.Entry, BlogEntry)
 site.register(models.Tag, BlogTag)
-site.register(models.Comment, BlogComment)

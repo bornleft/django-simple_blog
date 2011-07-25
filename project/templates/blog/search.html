@@ -19,6 +19,8 @@
                 {% endif %}
             {% endfor %}<br><br>
             </div>
+		{% empty %}
+			<h3>Записей в этой рубрике нету.</h3>
 		{% endfor %}
 
 	{% endblock %}

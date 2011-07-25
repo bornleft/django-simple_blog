@@ -5,7 +5,7 @@ from django.template import RequestContext
 from django.utils import simplejson as json
 from django.core.urlresolvers import reverse
 from django.utils.http import urlquote
-from project.apps.blog.models import Tag, Group, Comment, Entry
+from project.apps.blog.models import Tag, Group, Entry
 
 def first(request):
 	entrys = Entry.objects.all().order_by('-date_pub')

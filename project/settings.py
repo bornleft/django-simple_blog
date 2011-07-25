@@ -56,6 +56,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
     'project.context_processors.vars.setting_vars',
+	 'project.context_processors.vars.menu_vars',
 )
 
 MIDDLEWARE_CLASSES = (

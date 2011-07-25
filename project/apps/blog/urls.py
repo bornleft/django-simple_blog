@@ -8,6 +8,7 @@ from django.conf.urls.defaults import *
 urlpatterns = patterns('project.apps.blog.views',
 	url(r'^entry/(\d+)$', 'entry', name="view_entry"),
 	url(r'^$', 'first', name=u"first"),
+	url(r'^search/(.+?)', 'search', name = u"search"),
 )
 
 

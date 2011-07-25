@@ -32,7 +32,9 @@
 
     <div id="menuContainer" class="span-24 last border">
         {% block menu %}
-        Menu HERE
+        {% for m in menu %}
+			<a href = '/search/{{m}}'>{{ m }}</a>
+		{% endfor %}
         {% endblock %}
     </div>
 

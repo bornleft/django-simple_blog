@@ -25,3 +25,9 @@ def entry(request, pk):
 	return render_to_response('blog/entry.html', locals(), context_instance=RequestContext(request))
 
 
+def search(request, s):
+	try:
+		entrys = Entry.objects.filter(group__name__icontains = s).order_by('-date_pub')
+	except:
+		return HttpResponseNotFound
+	return render_to_response('blog/search.html', locals(), context_instance=RequestContext(request))

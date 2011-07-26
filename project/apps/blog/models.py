@@ -24,10 +24,20 @@ class Tag(models.Model):
 
 		def __unicode__(self):
 			return u'%s' % (self.name)
+		class Meta:
+			verbose_name = _(u'тэг')
+			verbose_name_plural = _(u'тэги')
+
+class Comment(models.Model):
+		entry = models.ForeignKey('Entry', verbose_name = _(u"Запись"), null = False, blank = False)
+		author = models.ForeignKey(User, verbose_name = _(u"Автор"), null = True, blank = True)
+		comment = models.TextField(_(u"Название"), max_length = 100, null = False, blank = False)
+		date_pub = models.DateTimeField(_(u"Дата опубликования"), auto_now_add=True)
+		date_change = models.DateTimeField(_(u"Дата опубликования"), auto_now_add=True)
 
 		class Meta:
-				verbose_name = _(u'тэг')
-				verbose_name_plural = _(u'тэги')
+				verbose_name = _(u'коммент')
+				verbose_name_plural = _(u'комменты')
 
 class Entry(models.Model):
 		group = models.ForeignKey(Group, verbose_name=_(u"группа"), null=False, blank=False)

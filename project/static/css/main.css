@@ -7,6 +7,29 @@ main.css
 **/
 
 
+/*
+Colors
+    #63393C;
+    #B54E61;
+    #D97A5D;
+    #C6EB8A;
+    #91B582;
+    
+
+
+*/
+
+a{
+    color: #B54E61;
+}
+    a:hover{
+        color: #63393C; 
+    }
+
+    a:link{
+        color: #63393C;
+    }
+
 #headerContainer{
     min-height: 100px;
 

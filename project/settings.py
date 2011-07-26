@@ -44,6 +44,11 @@ MEDIA_URL = '/static/'
 # Examples: "http://foo.com/media/", "/media/".
 #ADMIN_MEDIA_PREFIX = '/media/'
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'loginza.authentication.LoginzaBackend',
+)
+
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
@@ -55,8 +60,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.auth',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
+    
     'project.context_processors.vars.setting_vars',
-	 'project.context_processors.vars.menu_vars',
+	'project.context_processors.vars.menu_vars',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -85,13 +91,12 @@ INSTALLED_APPS = (
 
     'django_extensions',
 	'south',
-
+	'loginza',
 ###-------------------------------------
 ###     PROJECT APPS
 ###-------------------------------------
 
 	'project.apps.blog',
-	'project.lib.disqus',
 
     # 3d party applications
     # 'project.apps.3dparty.name',
@@ -102,7 +107,6 @@ INSTALLED_APPS = (
 
 from run.settings import *
 
-DISQUS_API_KEY = '16lBm0AFi5aKtZvW6DKtJmzODpk7Xa2wI75oaAXdGzZhjVKZtd1qUliI1k0kDjko'
-DISQUS_WEBSITE_SHORTNAME = 'simpledjnagoblog'
+
 
 PROJECT_NAME = "django-simple_blog"

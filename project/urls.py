@@ -14,11 +14,13 @@ urlpatterns = patterns('project.views',
 urlpatterns += patterns('',
 
     (r'^', include('project.apps.blog.urls')),
-                        
     ######----------------------------------
     ######     for admin
     ######----------------------------------
     (r'^admin/', include(admin.site.urls)),
+
+    
+	(r'^loginza/', include('loginza.urls')),
 )
 
 if settings.MEDIA_LOCAL_SERVER:

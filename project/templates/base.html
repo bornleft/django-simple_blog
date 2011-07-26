@@ -45,7 +45,15 @@
 
     <div id="rightContainer" class="span-8 last box">
         {% block addCont %}
-            Something here
+            {% if user.is_authenticated %}
+                
+              Welcome, {{ user }} (logout)
+
+            {% else %}
+                {% load loginza_widget %}
+                {% loginza_icons "Enter to blog by:" %}
+            {% endif %}
+
 
         {% endblock %}
     </div>

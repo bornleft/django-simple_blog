@@ -6,6 +6,7 @@ from django.utils import simplejson as json
 from django.core.urlresolvers import reverse
 from django.utils.http import urlquote
 from project.apps.blog.models import Tag, Group, Entry
+from project.apps.blog.forms import CommentForm
 
 def first(request):
 	entrys = Entry.objects.all().order_by('-date_pub')
@@ -18,6 +19,7 @@ def entry(request, pk):
 
 	try:
 		entry = Entry.objects.get(pk = pk)
+		Form = CommentForm()
 	except:
 		return HttpResponseNotFound
 

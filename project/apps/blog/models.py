@@ -51,7 +51,11 @@ class Entry(models.Model):
 			tags = Tag.objects.filter(entrys__in = [self])
 			return tags
 
+		def get_comments_num(self):
+			return Comment.objects.filter(entry = self).count()
 
+		def get_comments(self):
+			return Comment.objects.filter(entry = self)
 
 		def __unicode__(self):
 			return u'%s' % (self.name)

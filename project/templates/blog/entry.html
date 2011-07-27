@@ -5,15 +5,32 @@
 	{% block main %}
 
             <div class="entry">
-			<h3>{{ entry.name }}</h3>
-			{{ entry.entry }}<br>
-			<b>Автор</b> {{ entry.author }}<br>
-			<b>Дата публикации</b> {{ entry.date_pub }}<br><br>
-			<form action = '' method = post>
+			<h3>{{ e.name }}</h3>
+			{{ e.entry }}<br>
+			<b>Автор</b> {{ e.author }}<br>
+			<b>Дата публикации</b> {{ e.date_pub }}<br><br>
+
+            <!--Comments-->
+             {% for cmnt in e.get_comments %}
+                <div class="comment box" id="cmnt{{ cmnt.pk }}" >
+                    
+                    {{ cmnt.comment }}
+
+                </div>
+             {% endfor %}
+            
+            <!--ADD comment-->
+            <br/>
+			<form action = '{% url post_comment %}' method ="POST">{% csrf_token %}
 				<table>
-				<tr>
-				{{ Form.as_table }}
-				</tr>
+				    <tr>
+				        {{ form.as_table }}
+				    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" value="post" />
+                        </td>
+                    </tr>
 				</table>
 			</form>
 			</div>

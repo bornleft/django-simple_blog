@@ -30,15 +30,15 @@
 
     <div id="menuContainer" class="span-24 last border">
         {% block menu %}
-        {% for m in menu %}
-			<a href = '/search/{{m}}'>{{ m }}</a>
-		{% endfor %}
+			{% for m in menu %}
+				<a href = '/search/{{m}}'>{{ m }}</a>
+			{% endfor %}
         {% endblock %}
     </div>
 
     <div id="mainContainer" class="span-15 border">
         {% block main %}
-        Content here
+	        Content here
         {% endblock %}
 
     </div>
@@ -48,7 +48,7 @@
             {% if user.is_authenticated %}
 				Welcome, {{ user.username }} (<a href = "/admin/logout/">logout</a>)<br>
 				<a href = {% url add_entry %}>добавить запись</a>
-
+				{% if draft_count %}<p>Количество черновиков - <a href = '/draft'>{{ draft_count }}</a></p>{% endif %}
             {% else %}
                 {% load loginza_widget %}
                 {% loginza_icons "Enter to blog by:" %}

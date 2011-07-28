@@ -34,7 +34,6 @@ class Comment(models.Model):
 		comment = models.TextField(verbose_name = _(u"Коммент"), max_length = 100, null = False, blank = False)
 		date_pub = models.DateTimeField(_(u"Дата опубликования"), auto_now_add=True)
 		date_change = models.DateTimeField(_(u"Дата опубликования"), auto_now_add=True)
-		draft = models.BooleanField(_(u"Черновик"))
 
 		class Meta:
 				verbose_name = _(u'коммент')
@@ -47,6 +46,7 @@ class Entry(models.Model):
 		author = models.ForeignKey(User, verbose_name=_(u"Автор"), null=False, blank=False)
 		date_pub = models.DateTimeField(_(u"Дата опубликования"), auto_now_add=True)
 		date_change = models.DateTimeField(_(u"Дата изменения"), auto_now=True)
+		draft = models.BooleanField(_(u"Сохранить в черновик"))
 
 		def get_tags(self):
 			tags = Tag.objects.filter(entrys__in = [self])

@@ -9,8 +9,7 @@
             <br/>
 			<form action = '{% url add_entry %}' method ="POST">{% csrf_token %}
 				<table>
-				        {{ form_entry.as_table }}
-				        {{ form_tag.as_table }}
+			        {{ form_entry.as_table }}
                     <tr>
                         <td colspan = 2 style = "text-align: right;">
                             <input type="submit" name = "submit" value="post" />

@@ -9,10 +9,10 @@ from project.apps.blog.models import Tag, Group, Entry, Comment
 from project.apps.blog.forms import CommentForm, EntryForm, TagForm
 
 def first(request):
-	entrys = Entry.objects.all().order_by('-date_pub')
+	entrys = Entry.objects.filter(draft = False).order_by('-date_pub')
 	groups = Group.objects.all().order_by('name')
 
-	return render_to_response('blog/main.html', locals(), context_instance=RequestContext(request))
+	return render_to_response('blog/entrys.html', locals(), context_instance=RequestContext(request))
 
 
 def entry(request, pk):
@@ -29,16 +29,12 @@ def entry(request, pk):
 
 def add_entry(request):
 	#TODO delete it after dev
-	print request.POST
 	if request.method == "POST":
 		form_entry = EntryForm(request.POST, prefix = "entry")
 		form_tag = TagForm(request.POST, prefix = "tag")
 		if form_entry.is_valid() and form_tag.is_valid():
-
-			en = form_entry.save()
-
+			en = form_entry.save() # blog_entry.id may not be NULL, странно, почему так
 			tg = Tag.objects.filter(name = form_tag.cleaned_data['name'])
-
 			if tg:
 				#exist
 				tg[0].entrys.add(en.pk)
@@ -48,23 +44,31 @@ def add_entry(request):
 				tg = form_tag.save()
 				tg.entrys.add(en)
 				tg.save()
-				
 			return HttpResponseRedirect("/")
 	else:
 		form_entry = EntryForm(prefix = "entry")
 		form_tag = TagForm(prefix = "tag")
 	return render_to_response('blog/add_entry.html', locals(), context_instance=RequestContext(request))
 
+def edit_entry(request, pk):
+	en = Entry.objects.get(pk = pk)
+	#tag = Tag.objects.get(pk = pk)
+	form_entry = EntryForm(en, prefix = 'entry')
+	#form_tag = TagForm(tag, prefix = 'tag')	
+	return render_to_response('blog/edit_entry.html', locals(), context_instance=RequestContext(request))
+
 def entry(request, pk):
 	try:
-		e = Entry.objects.get(pk = pk)
+		entry = Entry.objects.get(pk = pk)
 	except:
 		return HttpResponseNotFound
-
-
-	form = CommentForm(initial = {"entry_pk": e.pk})
+	form = CommentForm(initial = {"entry_pk": entry.pk})
 
 	return render_to_response('blog/entry.html', locals(), context_instance=RequestContext(request))
+
+def draft(request):
+	entrys = Entry.objects.filter(draft = True).order_by('-date_pub')
+	return render_to_response('blog/entrys.html', locals(), context_instance=RequestContext(request))
 
 def post_comment(request):
 
@@ -92,6 +96,6 @@ def post_comment(request):
 
 def search(request, s):
 
-	entrys = Entry.objects.filter(group__name__icontains = s).order_by('-date_pub')
+	entrys = Entry.objects.filter(group__name__icontains = s, draft = False).order_by('-date_pub')
 
 	return render_to_response('blog/search.html', locals(), context_instance=RequestContext(request))

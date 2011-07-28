@@ -17,3 +17,8 @@ def menu_vars(request):
 	return {
 		'menu': mas,
 	}
+
+def draft_count_vars(request):
+	return {
+		'draft_count': project.apps.blog.models.Entry.objects.filter(draft = True).order_by('-date_pub').count(),
+	}

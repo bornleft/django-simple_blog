@@ -63,6 +63,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     
     'project.context_processors.vars.setting_vars',
 	'project.context_processors.vars.menu_vars',
+	'project.context_processors.vars.draft_count_vars',
 )
 
 MIDDLEWARE_CLASSES = (

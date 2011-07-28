@@ -12,13 +12,13 @@ class CommentForm(forms.Form):
 	comment = forms.CharField(label = _(u'Комментарий'), widget = forms.Textarea(attrs={'cols': 60, 'rows': 18}))
 
 class EntryForm(ModelForm):
-    class Meta:
+	class Meta:
 		model = Entry
 		widgets = {
 			'entry': forms.Textarea(attrs = {'cols': 60, 'rows': 18})
 		}
 
 class TagForm(ModelForm):
-    class Meta:
+	class Meta:
 		model = Tag
 		exclude = ('entrys',)

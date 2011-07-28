@@ -28,24 +28,31 @@ def entry(request, pk):
 	return render_to_response('blog/entry.html', locals(), context_instance=RequestContext(request))
 
 def add_entry(request):
+	#TODO delete it after dev
 	print request.POST
 	if request.method == "POST":
 		form_entry = EntryForm(request.POST, prefix = "entry")
 		form_tag = TagForm(request.POST, prefix = "tag")
 		if form_entry.is_valid() and form_tag.is_valid():
-			en = Entry(
-				group = form_entry.cleaned_data['group'],
-				name = form_entry.cleaned_data['name'],
-				entry = form_entry.cleaned_data['entry'],
-				author = form_entry.cleaned_data['author']
-			).save()
-			tg = Tag(
-				name = form_tag.cleaned_data['name'],
-			)
-			tg.entrys.add(en.pk).save()
+
+			en = form_entry.save()
+
+			tg = Tag.objects.filter(name = form_tag.cleaned_data['name'])
+
+			if tg:
+				#exist
+				tg[0].entrys.add(en.pk)
+				tg[0].save()
+			else:
+				#not exist
+				tg = form_tag.save()
+				tg.entrys.add(en)
+				tg.save()
+				
 			return HttpResponseRedirect("/")
-	form_entry = EntryForm(prefix = "entry")
-	form_tag = TagForm( prefix = "tag")
+	else:
+		form_entry = EntryForm(prefix = "entry")
+		form_tag = TagForm(prefix = "tag")
 	return render_to_response('blog/add_entry.html', locals(), context_instance=RequestContext(request))
 
 def entry(request, pk):

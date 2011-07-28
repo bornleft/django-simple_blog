@@ -10,10 +10,14 @@
 			<form action = '{% url add_entry %}' method ="POST">{% csrf_token %}
 				<table>
 				    <tr>
-				        {{ form.as_table }}
+				        {{ form_entry.as_table }}
 				    </tr>
+				    <tr>
+				        {{ form_tag.as_table }}
+				    </tr>
+
                     <tr>
-                        <td>
+                        <td colspan = 2 style = "text-align: right;">
                             <input type="submit" name = "submit" value="post" />
                         </td>
                     </tr>

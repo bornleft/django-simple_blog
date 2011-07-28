@@ -3,7 +3,7 @@ from django import forms
 from django.forms import ModelForm
 from django.forms import widgets
 from django.utils.translation import ugettext as _
-from project.apps.blog.models import Entry
+from project.apps.blog.models import Entry, Tag
 
 class CommentForm(forms.Form):
 	entry_pk = forms.CharField( widget= forms.HiddenInput)
@@ -14,3 +14,11 @@ class CommentForm(forms.Form):
 class EntryForm(ModelForm):
     class Meta:
 		model = Entry
+		widgets = {
+			'entry': forms.Textarea(attrs = {'cols': 60, 'rows': 18})
+		}
+
+class TagForm(ModelForm):
+    class Meta:
+		model = Tag
+		exclude = ('entrys',)

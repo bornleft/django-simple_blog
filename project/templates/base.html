@@ -46,8 +46,8 @@
     <div id="rightContainer" class="span-8 last box">
         {% block addCont %}
             {% if user.is_authenticated %}
-
-				Welcome, {{ user.username }} (logout)
+				Welcome, {{ user.username }} (<a href = "/admin/logout/">logout</a>)<br>
+				<a href = {% url add_entry %}>добавить запись</a>
 
             {% else %}
                 {% load loginza_widget %}

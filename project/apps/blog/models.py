@@ -34,6 +34,7 @@ class Comment(models.Model):
 		comment = models.TextField(verbose_name = _(u"Название"), max_length = 100, null = False, blank = False)
 		date_pub = models.DateTimeField(_(u"Дата опубликования"), auto_now_add=True)
 		date_change = models.DateTimeField(_(u"Дата опубликования"), auto_now_add=True)
+		draft = models.BooleanField(_(u"Черновик"))
 
 		class Meta:
 				verbose_name = _(u'коммент')

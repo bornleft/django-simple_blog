@@ -13,10 +13,16 @@
         <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/blueprint/misc.css" />
         <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/blueprint/typography.css" />
         <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/main.css" />
+
+
+        <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/chosen.css" />
         {% block extra_styles %}{% endblock %}
     {% endblock %}
 
     {% block lib_scripts %}
+        <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery/jquery.min.1.6.2.js"></script>
+        <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery/jquery.chosen.js"></script>
+
         {% block extra_lib_scripts %}{% endblock %}
     {% endblock %}
 

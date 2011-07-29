@@ -29,16 +29,21 @@ def entry(request, pk):
 
 def add_entry(request):
 	#TODO delete it after dev
+	print request.POST
+	
 	if request.method == "POST":
 		form_entry = EntryForm(request.POST, prefix = "entry")
 		form_tag = TagForm(request.POST, prefix = "tag")
 		if form_entry.is_valid() and form_tag.is_valid():
+
 			en = form_entry.save() # blog_entry.id may not be NULL, странно, почему так
+
 			tg = Tag.objects.filter(name = form_tag.cleaned_data['name'])
 			if tg:
 				#exist
-				tg[0].entrys.add(en.pk)
-				tg[0].save()
+				tg = tg[0]
+				tg.entrys.add(en.pk)
+				tg.save()
 			else:
 				#not exist
 				tg = form_tag.save()

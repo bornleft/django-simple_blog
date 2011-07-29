@@ -18,9 +18,6 @@
 
                 </div>
 			{% endfor %}
-            {% if entry.draft %}
-				<a href = '{% url edit_entry entry.pk %}'>Продолжить редактирование</a>
-			{% else %}
 				<!--ADD comment-->
 				<br/>
 				<form action = '{% url post_comment %}' method ="POST">{% csrf_token %}
@@ -36,7 +33,6 @@
 					</table>
 				</form>
 			<!--END comments-->
-			{% endif %}
 			</div>
 
 	{% endblock %}

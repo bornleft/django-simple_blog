@@ -2,22 +2,39 @@
 
 	{% block main %}
 		{% for entry in entrys %}
+
             <div class="entry">
 			<h3><a href="{% if not entry.draft %}{% url view_entry entry.pk %}{% else %}{% url edit_entry entry.pk %}{% endif %}">{{ entry.name }}</a></h3>
-			{% autoescape off %}{{ entry.entry }}{% endautoescape %}<br>
+			{{ entry.entry }}<br>
 			<b>Автор</b> {{ entry.author }}<br>
+
 			{% if entry.date_pub|date:"DATETIME_FORMAT" == entry.date_change|date:"DATETIME_FORMAT" %}
-				<b>Дата публикации</b> {{ entry.date_pub }}<br><br>
+				<b>Дата публикации</b> {{ entry.date_pub }}<br>
 			{% else %}
 				<b>Дата изменения</b> {{ entry.date_change|date:"DATETIME_FORMAT" }}<br>
 			{% endif %}
+
 			<b>Тэги</b>
             {% for tag in entry.get_tags %}
                 {% if forloop.last %}{{ tag }}.
                     {% else %}
                     {{ tag }},
                 {% endif %}
-            {% endfor %}<br><br>
+            {% endfor %}<br>
+
+			<span class = 'action'><a href ="{% url delete_entry entry.pk %}">удалить</a> | <a href = "{% url edit_entry entry.pk %}">редактировать</a></span>
             </div>
+
+		{% empty %}
+		<!-- Доделать -->
+            <div class="entry">
+				<h3>Рубрик не найденно</h3>
+				Попробуйте еще раз
+				<form action = '/search/' method = 'post'>
+					<input type = 'text'><br>
+					<input type = 'submit'>
+				</form>
+            </div>
+
 		{% endfor %}
 	{% endblock %}

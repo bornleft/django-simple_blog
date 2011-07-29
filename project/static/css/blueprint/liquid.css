@@ -72,7 +72,7 @@
 .span-12	{ width: 50%; }
 .span-13	{ width: 54%; }
 .span-14	{ width: 58%; }
-.span-15	{ width: 62%; }
+.span-15	{ width: 70%; }
 .span-16	{ width: 66%; }
 .span-17	{ width: 70%; }
 .span-18	{ width: 75%; }
@@ -141,12 +141,6 @@
 .prepend-21  { padding-left: 87%; }  
 .prepend-22  { padding-left: 91%; }  
 .prepend-23  { padding-left: 95%; }  
-
-
-/* Border on right hand side of a column. */
-.border {
-	border: 1px solid black;
-}
 
 /* Border with more whitespace, spans one column. */
 .colborder {

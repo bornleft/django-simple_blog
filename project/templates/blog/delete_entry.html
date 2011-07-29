@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+	{% block extra_lib_scripts %}
+	{% endblock %}
+
+	{% block main %}
+
+            <div class="entry">
+			<h3>Вы точно хотите удалить запись <u>{{ entry.name }}</u>?</h3>
+			<h3><a href = "{% url first %}">вернуться</a> <a href = "?True">да</a></h3>
+			</div>
+
+	{% endblock %}

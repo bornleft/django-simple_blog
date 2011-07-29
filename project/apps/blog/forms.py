@@ -6,7 +6,7 @@ from django.utils.translation import ugettext as _
 from project.apps.blog.models import Entry, Tag
 
 class CommentForm(forms.Form):
-	entry_pk = forms.CharField( widget= forms.HiddenInput)
+	entry_pk = forms.CharField(widget= forms.HiddenInput)
 	fname = forms.CharField(label = _(u'Имя'))
 	lname = forms.CharField(label = _(u'Фамилия'))
 	comment = forms.CharField(label = _(u'Комментарий'), widget = forms.Textarea(attrs={'cols': 60, 'rows': 18}))
@@ -14,8 +14,10 @@ class CommentForm(forms.Form):
 class EntryForm(ModelForm):
 	class Meta:
 		model = Entry
+		#exclude = ('author',)
 		widgets = {
-			'entry': forms.Textarea(attrs = {'cols': 60, 'rows': 18})
+			'entry': forms.Textarea(attrs = {'cols': 60, 'rows': 18}),
+			'author': forms.HiddenInput,
 		}
 
 class TagForm(ModelForm):

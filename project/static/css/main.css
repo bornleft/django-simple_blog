@@ -14,9 +14,6 @@ Colors
     #D97A5D;
     #C6EB8A;
     #91B582;
-    
-
-
 */
 
 a{
@@ -35,19 +32,21 @@ a{
 
 }
 
-#menuContainer{
-    min-height: 50px;
-
+#menuContainer {
+    min-height: 35px;
+	border-bottom: 2px solid #afafa1;
 }
 
-#mainContainer{
+#mainContainer {
    min-height: 600px;
 
 }
 
-#rightContainer{
+#rightContainer {
+	margin-top: 10px;
     min-height: 400px;
-
+	width: 20%;
+	float: right;
 }
 
 #footerContainer{
@@ -58,13 +57,14 @@ a{
 
 
 /* Entry */
-.entry{
-    border: 1px solid gray;
+.entry {
+	border-bottom: 2px solid #afafa1;
     padding: 2px;
     margin: 3px;
-
-
 }
 
+#mainContainer .entry .action {
+	text-align: right; display: block;
+}
 
 

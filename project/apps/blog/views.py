@@ -52,10 +52,11 @@ def add_entry(request):
 
 def edit_entry(request, pk):
 	en = Entry.objects.get(pk = pk)
-	#tag = Tag.objects.get(pk = pk)
-	form_entry = EntryForm(en, prefix = 'entry')
-	#form_tag = TagForm(tag, prefix = 'tag')	
-	return render_to_response('blog/edit_entry.html', locals(), context_instance=RequestContext(request))
+	#TODO get - works, and the filter not work, but we need a filter
+	tg = Tag.objects.filter(entrys = Entry.objects.get(pk = pk))[0]
+	form_entry = EntryForm(instance = en, prefix = 'entry')
+	form_tag = TagForm(instance = tg, prefix = 'tag') # only tag, not tags
+	return render_to_response('blog/add_entry.html', locals(), context_instance=RequestContext(request))
 
 def entry(request, pk):
 	try:

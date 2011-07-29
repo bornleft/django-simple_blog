@@ -3,11 +3,8 @@
 	{% endblock %}
 
 	{% block main %}
-
             <div class="entry">
-
-            <br/>
-			<form action = '{% url add_entry %}' method ="POST">{% csrf_token %}
+			<form action = "{% if not form_entry.fields.draft %} {% url add_entry %} {% else %} {% url update_entry form_entry.initial.id %} {% endif %}" method ="POST">{% csrf_token %}
 				<table>
 				        {{ form_entry.as_table }}
 				        {{ form_tag.as_table }}

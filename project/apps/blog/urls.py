@@ -12,6 +12,7 @@ urlpatterns = patterns('project.apps.blog.views',
 	url(r'^$', 'first', name=u"first"),
 	url(r'^search/(.+?)/$', 'search', name = "search"),
 	url(r'^add_entry/$', 'add_entry', name = "add_entry"),
+	url(r'^update_entry/(\d+)$', 'update_entry', name = "update_entry"),
 	url(r'^draft/$', 'draft', name = 'draft'),
     url(r'^post-comment/$', 'post_comment', name = "post_comment"),
 )

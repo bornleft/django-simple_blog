@@ -7,7 +7,6 @@ from django.core.urlresolvers import reverse
 from django.utils.http import urlquote
 from project.apps.blog.models import Tag, Group, Entry, Comment
 from project.apps.blog.forms import CommentForm, EntryForm, TagForm
-from django.forms.models import modelformset_factory as modelformset
 
 def first(request):
 	entrys = Entry.objects.filter(draft = False).order_by('-date_pub')
@@ -56,15 +55,25 @@ def add_entry(request):
 		form_tag = TagForm(prefix = "tag")
 	return render_to_response('blog/add_entry.html', locals(), context_instance=RequestContext(request))
 
+def update_entry(request, pk):
+	# not work
+	Entry.objects.filter(pk = 10).update(
+		group = form_entry.fields['group'],
+		name = form_entry.fields['name'],
+		entry = form_entry.fields['entry'],
+		author = 2,
+		draft = form_entry.fields['draft'],
+	)
+
 def edit_entry(request, pk):
 	try:
 		en = Entry.objects.get(pk = pk)
+		tg = Tag.objects.filter(entrys = Entry.objects.get(pk = pk))[0]
+
 	except:
 		return HttpResponseNotFound
-	#TODO get - works, and the filter not work, but we need a filter
-	tg = Tag.objects.filter(entrys = Entry.objects.get(pk = pk))[0]
 	form_entry = EntryForm(instance = en, prefix = 'entry')
-	form_tag = TagForm(instance = tg, prefix = 'tag') # only tag, not tags
+	form_tag = TagForm(instance = tg, prefix = 'tag')
 	return render_to_response('blog/add_entry.html', locals(), context_instance=RequestContext(request))
 
 def delete_entry(request, pk):

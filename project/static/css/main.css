@@ -40,8 +40,11 @@ a{
 	border-bottom: 2px solid #afafa1;
 }
 
-#searchContainer input{
-    float:left;
+
+
+
+#searchContainer input {
+    float:right;
 
 }
 

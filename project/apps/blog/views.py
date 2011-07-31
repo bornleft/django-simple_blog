@@ -12,7 +12,6 @@ from project.apps.blog.forms import CommentForm, EntryForm, TagForm
 def first(request):
 	entrys = Entry.objects.filter(draft = False).order_by('-date_pub')
 	groups = Group.objects.all().order_by('name')
-
 	return render_to_response('blog/entrys.html', locals(), context_instance=RequestContext(request))
 
 
@@ -56,14 +55,19 @@ def add_entry(request):
 		form_tag = TagForm(prefix = "tag")
 	return render_to_response('blog/add_entry.html', locals(), context_instance=RequestContext(request))
 
-def update_entry(request, pk):
+def update_entry(request):
 	# not work
-	Entry.objects.filter(pk = 10).update(
+	form_entry = EntryForm(request.POST, prefix = "entry")
+	if form_entry.fields['draft']:
+		draft = True,
+	else:
+		draft = False,
+	Entry.objects.filter(pk = 7).update(
 		group = form_entry.fields['group'],
 		name = form_entry.fields['name'],
 		entry = form_entry.fields['entry'],
-		author = 2,
-		draft = form_entry.fields['draft'],
+		author = request.user.id,
+		draft = True,
 	)
 
 def edit_entry(request, pk):

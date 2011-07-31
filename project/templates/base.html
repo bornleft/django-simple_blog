@@ -34,7 +34,7 @@
         <h1><a href="{% url first %}">Blog</a></h1>
     </div>
 
-    <div id="menuContainer" class="span-15 border">
+    <div id="menuContainer" class="span-17 border">
         {% block menu %}
 			{% for m in menu %}
 				<a href = '{% url section m.pk %}'>{{ m }}</a>
@@ -44,12 +44,17 @@
 
     <div id="searchContainer" class="span-7 last border">
         <form action = '{% url search %}' method = 'GET'>
+<<<<<<< HEAD
 			<input type='text'  name="q" placeholder="search"/>
 			<input type='submit' value="search"/>
+=======
+			<input type='submit' value="search" name="submit"/>
+            <input type='text'  name="q" placeholder="search"/>
+>>>>>>> 1ed9e259e3cb3cd84dd1fd35177330d41c6650fa
 	    </form>
     </div>
 
-    <div id="mainContainer" class="span-15 border">
+    <div id="mainContainer" class="span-17 border">
         {% block main %}
 	        Content here
         {% endblock %}

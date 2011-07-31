@@ -58,17 +58,22 @@ def add_entry(request):
 def update_entry(request):
 	# not work
 	form_entry = EntryForm(request.POST, prefix = "entry")
-	if form_entry.fields['draft']:
-		draft = True,
-	else:
-		draft = False,
-	Entry.objects.filter(pk = 7).update(
-		group = form_entry.fields['group'],
-		name = form_entry.fields['name'],
-		entry = form_entry.fields['entry'],
-		author = request.user.id,
-		draft = True,
-	)
+	if form_entry.is_valid():
+		if form_entry.cleaned_data['draft']:
+			_draft = True
+		else:
+			_draft = False
+
+		Entry.objects.filter(pk = 7).update(
+			group = form_entry.cleaned_data['group'],
+			name = form_entry.cleaned_data['name'],
+			entry = form_entry.cleaned_data['entry'],
+			author = request.user.id,
+			draft = _draft,
+		)
+
+	return HttpResponseRedirect("/")
+
 
 def edit_entry(request, pk):
 	try:

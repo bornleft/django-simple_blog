@@ -142,6 +142,12 @@
 .prepend-22  { padding-left: 91%; }  
 .prepend-23  { padding-left: 95%; }  
 
+
+/* Border on right hand side of a column. */
+.border {
+	border: 1px solid black;
+}
+
 /* Border with more whitespace, spans one column. */
 .colborder {
 	padding-right: 2%;

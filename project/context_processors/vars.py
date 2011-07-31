@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import project.settings
+from project.apps.blog.models import Group, Entry
 
 def setting_vars(request):
 
@@ -10,15 +11,14 @@ def setting_vars(request):
 	}
 
 def menu_vars(request):
-	groups = project.apps.blog.models.Group.objects.all().order_by('name')
-	mas = []
-	for group in groups:
-		mas.append(unicode(group.name))
+	groups = Group.objects.all().order_by('name')
+
 	return {
-		'menu': mas,
+		'menu': groups,
 	}
 
 def draft_count_vars(request):
+
 	return {
-		'draft_count': project.apps.blog.models.Entry.objects.filter(draft = True).order_by('-date_pub').count(),
+		'draft_count': Entry.objects.filter(draft = True).order_by('-date_pub').count(),
 	}

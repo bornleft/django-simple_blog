@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.db.models.query_utils import Q
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponseServerError, HttpResponse, HttpResponseNotFound
 from django.template import RequestContext
@@ -102,6 +103,13 @@ def draft(request):
 		return HttpResponseRedirect('/')
 	return render_to_response('blog/entrys.html', locals(), context_instance=RequestContext(request))
 
+def section(request, section_pk):
+
+	entrys = Entry.objects.filter( group__pk = section_pk, draft = False ).order_by('-date_pub')
+	
+	return render_to_response('blog/entrys.html', locals(), context_instance=RequestContext(request))
+
+
 def post_comment(request):
 
 	if request.method == "POST":
@@ -126,8 +134,13 @@ def post_comment(request):
 	else: #not POST
 		return HttpResponseServerError
 
-def search(request, s):
-
-	entrys = Entry.objects.filter(group__name__icontains = s, draft = False).order_by('-date_pub')
+def search(request):
+	if request.GET:
+		q = request.GET["q"]
+		entrys = Entry.objects.filter(
+			Q(name__contains = q) | Q(group__name__contains = q)
+			, Q(draft = False) ).order_by('-date_pub')
+	else: #not POST
+		return HttpResponseServerError
 
 	return render_to_response('blog/entrys.html', locals(), context_instance=RequestContext(request))

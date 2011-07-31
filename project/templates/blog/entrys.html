@@ -26,13 +26,13 @@
             </div>
 
 		{% empty %}
-		<!-- Доделать -->
+		<!-- TODO Доделать -->
             <div class="entry">
 				<h3>Рубрик не найденно</h3>
 				Попробуйте еще раз
-				<form action = '/search/' method = 'post'>
-					<input type = 'text'><br>
-					<input type = 'submit'>
+				<form action = '{% url search %}' method = 'GET'>
+					<input type='text'  name="q" placeholder="search"/><br>
+					<input type='submit' />
 				</form>
             </div>
 

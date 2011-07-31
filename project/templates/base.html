@@ -34,12 +34,19 @@
         <h1><a href="{% url first %}">Blog</a></h1>
     </div>
 
-    <div id="menuContainer" class="span-24 last border">
+    <div id="menuContainer" class="span-15 border">
         {% block menu %}
 			{% for m in menu %}
-				<a href = '/search/{{m}}'>{{ m }}</a>
+				<a href = '{% url section m.pk %}'>{{ m }}</a>
 			{% endfor %}
         {% endblock %}
+    </div>
+
+    <div id="searchContainer" class="span-7 last boredr">
+        <form action = '{% url search %}' method = 'GET'>
+			<input type='text'  name="q" placeholder="search"/>
+			<input type='submit' value="search" name="submit"/>
+	    </form>
     </div>
 
     <div id="mainContainer" class="span-15 border">

@@ -3,10 +3,11 @@
 	{% endblock %}
 
 	{% block main %}
+            {% load blog_extra %}
 
             <div class="entry">
 			<h3>{{ entry.name }}</h3>
-			{{ entry.entry }}<br>
+			{{ entry.entry|all_entry }}<br>
 			<b>Автор</b> {{ entry.author }}<br>
 			<b>Дата публикации</b> {{ entry.date_pub }}<br><br>
 

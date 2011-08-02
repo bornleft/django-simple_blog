@@ -91,14 +91,14 @@ INSTALLED_APPS = (
     # Utility applications
 
     'django_extensions',
-	'south',
-	'loginza',
-###-------------------------------------
-###     PROJECT APPS
-###-------------------------------------
+    'south',
+    'loginza',
+    ###-------------------------------------
+    ###     PROJECT APPS
+    ###-------------------------------------
 
-	'project.apps.blog',
-
+    'project.apps.blog',
+    'project',
     # 3d party applications
     # 'project.apps.3dparty.name',
 

@@ -16,9 +16,9 @@ urlpatterns = patterns('project.apps.blog.views',
     url(r'^update_entry/$', 'update_entry', name = "update_entry"),
     url(r'^draft/$', 'draft', name = 'draft'),
     url(r'^post-comment/$', 'post_comment', name = "post_comment"),
-    url(r'^$', 'first', name=u"first"),
+    url(r'^$', 'first', name="first"),
 )
 
 urlpatterns += patterns('',
-    (r'^rss/$', RssNewsFeed()),
+    url(r'^rss/$', RssNewsFeed(), name = "rss"),
 )

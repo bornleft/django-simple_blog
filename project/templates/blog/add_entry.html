@@ -4,7 +4,7 @@
 
 	{% block main %}
             <div class="entry">
-			<form action = "{% if not form_entry.fields.draft %} {% url add_entry %} {% else %} {% url update_entry %} {% endif %}" method ="POST">{% csrf_token %}
+			<form action = "{% if not entry.draft %}{% url add_entry %}{% else %}{% url update_entry %}{% endif %}" method ="POST">{% csrf_token %}
 				<table>
 				        {{ form_entry.as_table }}
 				        {{ form_tag.as_table }}

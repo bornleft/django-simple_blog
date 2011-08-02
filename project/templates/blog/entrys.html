@@ -15,12 +15,7 @@
 			{% endif %}
 
 			<b>Тэги</b>
-            {% for tag in entry.get_tags %}
-                {% if forloop.last %}{{ tag }}.
-                    {% else %}
-                    {{ tag }},
-                {% endif %}
-            {% endfor %}<br>
+               {{ entry.get_tags|join:", " }}
 
 			<span class = 'action'><a href ="{% url delete_entry entry.pk %}">удалить</a> | <a href = "{% url edit_entry entry.pk %}">редактировать</a></span>
             </div>

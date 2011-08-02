@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 
 from django.conf.urls.defaults import *
-
-
+#from project.apps.blog.views import RSS
 
 # Global URLConf
+from project.apps.blog.views import RssNewsFeed
+
 urlpatterns = patterns('project.apps.blog.views',
     url(r'^entry/(\d+)/$', 'entry', name = "view_entry"),
     url(r'^entry/(\d+)/edit/$', 'edit_entry', name = 'edit_entry'),
     url(r'^entry/(\d+)/delete/$', 'delete_entry', name = 'delete_entry'),
     url(r'^section/(\d+)$', 'section', name = "section"),
-
     url(r'^search/', 'search', name = "search"),
     url(r'^add_entry/$', 'add_entry', name = "add_entry"),
     url(r'^update_entry/$', 'update_entry', name = "update_entry"),
@@ -19,6 +19,6 @@ urlpatterns = patterns('project.apps.blog.views',
     url(r'^$', 'first', name=u"first"),
 )
 
-
-
-
+urlpatterns += patterns('',
+    (r'^rss/$', RssNewsFeed()),
+)

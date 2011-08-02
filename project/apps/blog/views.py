@@ -8,6 +8,7 @@ from django.core.urlresolvers import reverse
 from django.utils.http import urlquote
 from project.apps.blog.models import Tag, Group, Entry, Comment
 from project.apps.blog.forms import CommentForm, EntryForm, TagForm
+from django.contrib.syndication.views import Feed
 
 def first(request):
     entrys = Entry.objects.filter(draft = False).order_by('-date_pub')
@@ -153,3 +154,18 @@ def search(request):
         return HttpResponseServerError
 
     return render_to_response('blog/entrys.html', locals(), context_instance=RequestContext(request))
+
+class RssNewsFeed(Feed):
+    title = "Django-simple_blog rss"
+    description = "Updates on changes and additions to django-simple_blog."
+
+    def items(self):
+        return Entry.objects.order_by('-date_pub')
+    def item_title(self, item):
+        return item.name
+    def item_description(self, item):
+        return item.entry
+    def item_link(self, item):
+        return '/entry/%s' % item.id
+    def link(self, obj):
+        return '/'

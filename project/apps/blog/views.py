@@ -152,6 +152,7 @@ def search(request):
 class RssNewsFeed(Feed):
     title = "Django-simple_blog rss"
     description = "Updates on changes and additions to django-simple_blog."
+    #description_template = 'blog/rss_description.html'
 
     def items(self):
         return Entry.objects.order_by('-date_pub')

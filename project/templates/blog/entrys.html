@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
-
+{% load blog_extra %}
 	{% block main %}
 		{% for entry in entrys %}
 
             <div class="entry">
 			<h3><a href="{% if not entry.draft %}{% url view_entry entry.pk %}{% else %}{% url add_modify_entry entry.pk %}{% endif %}">{{ entry.name }}</a></h3>
-			{{ entry.entry }}<br>
+			{{ entry.entry|cut_entry }}<br>
 			<b>Автор</b> {{ entry.author }}<br>
 
 			{% if entry.date_pub|date:"DATETIME_FORMAT" == entry.date_change|date:"DATETIME_FORMAT" %}

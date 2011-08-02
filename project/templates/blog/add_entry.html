@@ -3,13 +3,14 @@
 	{% endblock %}
 
 	{% block main %}
+        
             <div class="entry">
-			<form action = "{% if not entry.draft %}{% url add_entry %}{% else %}{% url update_entry %}{% endif %}" method ="POST">{% csrf_token %}
+			<form action = "." method ="POST">{% csrf_token %}
 				<table>
 				        {{ form_entry.as_table }}
 				        {{ form_tag.as_table }}
                     <tr>
-                        <!--TODO move align in .css class-->
+                        <!-- TODO move align in .css class -->
                         <td colspan="2" style="text-align: right;">
                             <input type="submit" name = "submit" value="post" />
                         </td>
@@ -18,4 +19,4 @@
 			</form>
 			</div>
 
-	{% endblock %}
+	{% endblock %}  

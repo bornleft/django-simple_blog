@@ -28,13 +28,24 @@ def entry(request, pk):
 
     return render_to_response('blog/entry.html', locals(), context_instance=RequestContext(request))
 
-def add_entry(request):
+def add_modify_entry(request, pk = None):
     #TODO delete it after dev
     print request.user
 
     if request.method == "POST":
-        form_entry = EntryForm(request.POST, prefix = "entry")
-        form_tag = TagForm(request.POST, prefix = "tag")
+        if pk:
+            #пк указан, в ссылке, это редактирование
+            _entry = Entry.objects.get(pk = pk)
+
+
+            form_entry = EntryForm(request.POST, instance = _entry, prefix = "entry")
+            if _entry.get_tags() :
+                form_tag = TagForm(request.POST, prefix = "tag", instance = _entry.get_tags()[0] )
+            else:
+                form_tag = TagForm(request.POST, prefix = "tag")
+        else:
+            form_entry = EntryForm(request.POST, prefix = "entry")
+            form_tag = TagForm(request.POST, prefix = "tag")
 
         if form_entry.is_valid() and form_tag.is_valid():
 
@@ -52,40 +63,23 @@ def add_entry(request):
                 tg.save()
             return HttpResponseRedirect("/")
     else:
-        form_entry = EntryForm(initial = {'author': request.user.id}, prefix = "entry")
-        form_tag = TagForm(prefix = "tag")
-    return render_to_response('blog/add_entry.html', locals(), context_instance=RequestContext(request))
+        if pk:
+            #пк указан, в ссылке, это редактирование
+            _entry = Entry.objects.get(pk = pk)
 
-def update_entry(request):
-    # not work
-    form_entry = EntryForm(request.POST, prefix = "entry")
-    if form_entry.is_valid():
-        if form_entry.cleaned_data['draft']:
-            _draft = True
+
+            form_entry = EntryForm(instance = _entry, prefix = "entry")
+            if _entry.get_tags() :
+                form_tag = TagForm(prefix = "tag", instance = _entry.get_tags()[0] )
+            else:
+                form_tag = TagForm(prefix = "tag")
+
         else:
-            _draft = False
-
-        Entry.objects.filter(pk = 7).update(
-            group = form_entry.cleaned_data['group'],
-            name = form_entry.cleaned_data['name'],
-            entry = form_entry.cleaned_data['entry'],
-            author = request.user.id,
-            draft = _draft,
-        )
-
-    return HttpResponseRedirect("/")
-
-
-def edit_entry(request, pk):
-    try:
-        en = Entry.objects.get(pk = pk)
-        tg = Tag.objects.filter(entrys = Entry.objects.get(pk = pk))[0]
-
-    except:
-        return HttpResponseNotFound
-    form_entry = EntryForm(instance = en, prefix = 'entry')
-    form_tag = TagForm(instance = tg, prefix = 'tag')
+            form_entry = EntryForm(initial = {'author': request.user.id}, prefix = "entry")
+            form_tag = TagForm(prefix = "tag")
+        
     return render_to_response('blog/add_entry.html', locals(), context_instance=RequestContext(request))
+
 
 def delete_entry(request, pk):
     if request.GET:

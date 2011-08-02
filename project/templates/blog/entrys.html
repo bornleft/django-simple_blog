@@ -26,7 +26,7 @@
 				<h3>Рубрик не найденно</h3>
 				Попробуйте еще раз
 				<form action = '{% url search %}' method = 'GET'>
-					<input type='text'  name="q" placeholder="search"/><br>
+					<input type='text'  name="q" placeholder="search" value = "{{ request.GET.q }}" /><br>
 					<input type='submit' />
 				</form>
             </div>

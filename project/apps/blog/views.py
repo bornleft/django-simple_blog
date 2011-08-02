@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db.models.query_utils import Q
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponseServerError, HttpResponse, HttpResponseNotFound
 from django.template import RequestContext
 from django.utils import simplejson as json
@@ -77,7 +77,7 @@ def add_modify_entry(request, pk = None):
         else:
             form_entry = EntryForm(initial = {'author': request.user.id}, prefix = "entry")
             form_tag = TagForm(prefix = "tag")
-        
+
     return render_to_response('blog/add_entry.html', locals(), context_instance=RequestContext(request))
 
 
@@ -153,16 +153,13 @@ class RssNewsFeed(Feed):
     title = "Django-simple_blog rss"
     description = "Updates on changes and additions to django-simple_blog."
 
-    def get_object(self, request, group_id):
-        return get_object_or_404(Entry, group__pk=group_id)
-
-    def items(self, obj):
-        return Entry.objects.filter(draft=False).order_by('-date_pub')
-    def item_title(item, obj):
-        return obj
-    def item_description(item, obj):
-        return obj
-    def item_link(item, obj):
-        return obj
+    def items(self):
+        return Entry.objects.order_by('-date_pub')
+    def item_title(self, item):
+        return item.name
+    def item_description(self, item):
+        return item.entry
+    def item_link(self, item):
+        return '/entry/%s' % item.id
     def link(self, obj):
-        return obj
+        return '/'

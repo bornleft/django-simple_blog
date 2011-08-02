@@ -19,5 +19,4 @@ urlpatterns = patterns('project.apps.blog.views',
 
 urlpatterns += patterns('',
     url(r'^rss/$', RssNewsFeed(), name = "rss"),
-    url(r'^rss/(?P<group_id>\d+)$', RssNewsFeed(), name = "rss_group"),
 )

@@ -62,7 +62,7 @@
         {% block addCont %}
             {% if user.is_authenticated %}
 				Welcome, {{ user.username }} (<a href = "/admin/logout/">logout</a>)<br>
-				<a href = {% url add_entry %}>добавить запись</a>
+				<a href = {% url add_modify_entry %}>добавить запись</a>
 				{% if draft_count %}<p>Количество черновиков - <a href = '/draft'>{{ draft_count }}</a></p>{% endif %}
             {% else %}
                 {% load loginza_widget %}

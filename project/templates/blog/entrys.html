@@ -4,7 +4,7 @@
 		{% for entry in entrys %}
 
             <div class="entry">
-			<h3><a href="{% if not entry.draft %}{% url view_entry entry.pk %}{% else %}{% url edit_entry entry.pk %}{% endif %}">{{ entry.name }}</a></h3>
+			<h3><a href="{% if not entry.draft %}{% url view_entry entry.pk %}{% else %}{% url add_modify_entry entry.pk %}{% endif %}">{{ entry.name }}</a></h3>
 			{{ entry.entry }}<br>
 			<b>Автор</b> {{ entry.author }}<br>
 
@@ -17,7 +17,7 @@
 			<b>Тэги</b>
                {{ entry.get_tags|join:", " }}
 
-			<span class = 'action'><a href ="{% url delete_entry entry.pk %}">удалить</a> | <a href = "{% url edit_entry entry.pk %}">редактировать</a></span>
+			<span class = 'action'><a href ="{% url delete_entry entry.pk %}">удалить</a> | <a href = "{% url add_modify_entry entry.pk %}">редактировать</a></span>
             </div>
 
 		{% empty %}
